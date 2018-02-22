@@ -9,6 +9,10 @@ def takeUsersId():
     id = list(set(id))
     idInt = [int(i) for i in id]
 
-    return idInt
+    idStr = str(idInt)
 
-print(takeUsersId())
+    return idStr
+
+
+
+
