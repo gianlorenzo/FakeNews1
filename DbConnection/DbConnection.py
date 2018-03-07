@@ -9,12 +9,15 @@ def connectionDb():
     collection = database['320_users']
     return collection
 
-def takeUsersId():
-    id_users = connectionDb().distinct("id_user")
-    for i in id_users:
-        idInt = [int(i) for i in id_users]
-    return idInt
+#Restituisce tutte le tuple
+def takeUsers():
+    return connectionDb().find({})
 
-print(takeUsersId())
+#Restituisce i 321 id
+def takeUsersId():
+    return connectionDb().distinct("id_user")
+
+
+
 
 
