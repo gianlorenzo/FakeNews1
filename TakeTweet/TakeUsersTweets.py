@@ -1,20 +1,26 @@
 from DbConnection import DbConnection
 import unicodedata
-users = DbConnection.takeUsers()
 idUsers = DbConnection.takeUsersId()
 
 
-def provaId():
-    for id in idUsers:
-        for user in users[:5000]:
-            if user['id_user'] == id:
-                tweet = user['Tweet']
-                textTweet = []
-                textTweet.append(tweet['text'])
-        file = open(str(id) + ".txt", "w+")
-        for text in textTweet:
-            newTweet = unicodedata.normalize('NFKD', text).encode('ascii','ignore')
-            file.write(newTweet+"\n")
-    file.close()
+def writeFile():
+   for id in idUsers[0:2]:
+       i = 0
+       file = open(str(id)+".txt","w+")
+       tweet = DbConnection.takeText(id)
+       while(i<len(tweet)):
+           text = tweet[i]['Tweet']['text']
+           newText = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore')
+           file.write(newText+"\n")
+           i=i+1
+       file.close()
 
-provaId()
+
+
+writeFile()
+
+
+
+
+
+
