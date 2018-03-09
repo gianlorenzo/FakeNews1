@@ -5,7 +5,7 @@ def connectionDb():
     uri = "mongodb://127.0.0.1:27017"
 
     client = MongoClient(uri)
-    database = client['FakeNews']
+    database = client['Fake_News']
     collection = database['320_users']
     return collection
 
@@ -21,7 +21,7 @@ def takeText(id):
     text = connectionDb().find({'id_user': id}, {"Tweet.text": 1})
     return list(text)
 
-
+print(len(takeText(73251704)))
 
 
 
