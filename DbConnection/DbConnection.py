@@ -21,7 +21,7 @@ def takeText(id):
     text = connectionDb().find({'id_user': id}, {"Tweet.text": 1})
     return list(text)
 
-print(len(takeText(73251704)))
+#print(len(takeText(73251704)))
 
 
 
