@@ -1,9 +1,11 @@
-#pip install nltk
 
 from nltk.tokenize import RegexpTokenizer
 import re
-from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+import stopwords
+
+t = "Modernation !!! === ?!?! ,,,:;  Wheat Really Isn't Wheats 1000 At All https://t.co/Duy524oRNp ..."
+
 
 #restituisce una lista di parole ripulite
 def pulisci(testo):
@@ -13,11 +15,7 @@ def pulisci(testo):
     #print(stopped)
     stemmed = stemmer(stopped)
     #print(stemmed)
-    for(text += stemmed[i] for i in stemmed)
-    return stemmed
-
-t = "Modernation !!! === ?!?! ,,,:;  Wheat Really Isn't Wheats 1000 At All https://t.co/Duy524oRNp ..."
-t2 = "https://t.co/4FK2CniCk3 : 819dfb7f-7d6b-4b70-847c-071eb489a53c"
+    return " ".join(stemmed)
 
 def tokenizer(testo):
     #match solo parole di 3+ caratteri
@@ -27,7 +25,7 @@ def tokenizer(testo):
     return tokenizer.tokenize(result)
 
 def stopper(testo):
-    stop_words = set(stopwords.words('english'))
+    stop_words = set(stopwords.get_stopwords('english'))
     print(stop_words)
     #stop_words.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}'])
     result = [i.lower() for i in testo if i.lower() not in stop_words]
@@ -39,12 +37,6 @@ def stemmer(testo):
     return result
 #print((type(stemmer(t))))
 
-print(pulisci(t))
 
 
 
-
-#stemmer di porter
-#stemmer di krovetz
-#POS tagging
-#n-grams
