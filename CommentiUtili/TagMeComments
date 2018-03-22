@@ -1,0 +1,11 @@
+# Get relatedness between three pairs of entities specified by title.
+# The last entity does not exist, hence the value for that pair will be None.
+rels = tagme.relatedness_title([("Barack_Obama", "Italy"),
+                                ("Italy", "Germany"),
+                                ("Italy", "BAD ENTITY NAME")])
+
+rels.relatedness[0].rel
+
+tomatoes_mentions = tagme.mentions("I definitely like ice cream better than tomatoes.")
+
+lunch_annotations = tagme.annotate("My favourite meal is Mexican burritos.")
