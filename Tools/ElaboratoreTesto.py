@@ -26,7 +26,7 @@ def tokenizer(testo):
 
 def stopper(testo):
     stop_words = set(stopwords.get_stopwords('english'))
-    print(stop_words)
+    #print(stop_words)
     #stop_words.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}'])
     result = [i.lower() for i in testo if i.lower() not in stop_words]
     return result

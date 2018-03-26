@@ -6,7 +6,7 @@ import numpy as np
 tagme.GCUBE_TOKEN = "8a0bd46c-6638-493f-bd49-82e9965473ff-843339462"
 
 def take_text_by_id(user_id):
-    dir = "C:\\Users\\NandG\\PycharmProjects\\FakeNews\\TakeTweet\\"+str(user_id)+".txt"
+    dir = "/home/davben/git/FakeNews1/TakeTweet/"+str(user_id)+".txt"
     file = open(dir, "r+")
     user_text = file.read()
     return user_text

@@ -10,41 +10,62 @@ import pandas as pd
 # 2. numero dei termini ordinati per occorrenze(da modificare)
 # 3.,4.,5. : http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
+dirNand = "C:\\Users\\NandG\\PycharmProjects\\FakeNews\\TakeTweet\\"
+dirDav = "/home/davben/git/FakeNews1/TakeTweet/"
+
 def take_text_by_file(id_user):
-    dir = "C:\\Users\\NandG\\PycharmProjects\\FakeNews\\TakeTweet\\"+str(id_user)+".txt"
+    dir = dirDav+str(id_user)+".txt"
     file = open(dir,"r+")
     testo_utente = file.read()
     return testo_utente
 
 #cVec_fitter(153692738,20,1,.5,(1,2))
 def cVec_fitter_termOcc(id,raws,min_df,max_df,ngram_range):
+    if (min_df == None):
+        min_df = 1
+    if (max_df == None):
+        max_df = 0.7
+    if (ngram_range == None):
+        ngram_range = (1, 2)
     testo_utente = take_text_by_file(id)
     cvec = CountVectorizer(min_df=min_df, max_df=max_df, ngram_range=ngram_range)
     cvec.fit((testo_utente.split()))
     cvec_counts = cvec.transform(testo_utente.split())
-    term_occurr(cvec_counts, cvec,raws)
+    return term_occurr(cvec_counts, cvec,raws)
 
 def term_occurr(cvec_counts,cvec,raws):
     occ = np.asarray(cvec_counts.sum(axis=0)).ravel().tolist()
     counts_df = pd.DataFrame({'term': cvec.get_feature_names(), 'occurrences': occ})
-    print(counts_df.sort_values(by='occurrences', ascending=False).head(raws))
+    if(raws == None):
+        return (counts_df.sort_values(by='occurrences', ascending=False))
+    return (counts_df.sort_values(by='occurrences', ascending=False).head(raws))
 
 def cVec_fitter_termWeight(id,raws,min_df,max_df,ngram_range):
+    if(min_df == None):
+        min_df = 1
+    if(max_df== None):
+        max_df = 0.7
+    if(ngram_range == None):
+        ngram_range = (1,2)
     testo_utente = take_text_by_file(id)
     cvec = CountVectorizer(min_df=min_df, max_df=max_df, ngram_range=ngram_range)
     cvec.fit((testo_utente.split()))
     cvec_counts = cvec.transform(testo_utente.split())
-    term_weights(cvec_counts, cvec,raws)
+    return term_weights(cvec_counts, cvec,raws)
 
 def term_weights(cvec_counts, cvec,raws):
     transformer = TfidfTransformer()
     transformed_weights = transformer.fit_transform(cvec_counts)
     weights = np.asarray(transformed_weights.mean(axis=0)).ravel().tolist()
     weights_df = pd.DataFrame({'term': cvec.get_feature_names(), 'weight': weights})
-    print(weights_df.sort_values(by='weight', ascending=False).head(raws))
+    if(raws == None):
+        return (weights_df.sort_values(by='weight', ascending=False))
+    return (weights_df.sort_values(by='weight', ascending=False).head(raws))
+
 
 
 
 #(id,raws,min_df,max_df,ngram_range)
-cVec_fitter_termOcc(153692738,20,1,0.7,(1,2))
-cVec_fitter_termWeight(153692738,20,1,.5,(1,2))
+#x = (cVec_fitter_termOcc(73251704,100,1,0.7,(1,2)))
+#x = cVec_fitter_termWeight(847661349840617472,100,1,0.7,(1,2))
+#print((x))

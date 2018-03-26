@@ -1,1 +1,7 @@
 pesare gli utenti in base all esito del tfVectorizer
+
+->scremare parole->trasformare in entità->
+
+da un singolo file di parole raccogliere solo quelle che hanno similarità alta e creare un profilo
+la somma delle similarità indica quanto è coerente un utente(tenere conto della media con cui occorrono)
+(scarta le parole con un peso molto alto rispetto alla media)
