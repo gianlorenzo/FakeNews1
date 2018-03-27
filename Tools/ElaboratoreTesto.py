@@ -2,6 +2,7 @@
 from nltk.tokenize import RegexpTokenizer
 import re
 from nltk.stem.porter import PorterStemmer
+from nltk.stem.snowball import SnowballStemmer
 import stopwords
 
 t = "Modernation !!! === ?!?! ,,,:;  Wheat Really Isn't Wheats 1000 At All https://t.co/Duy524oRNp ..."
@@ -32,8 +33,10 @@ def stopper(testo):
     return result
 
 def stemmer(testo):
-    porter = PorterStemmer()
-    result = [porter.stem(i.lower()) for i in testo]
+    #porter = PorterStemmer()
+    #result = [porter.stem(i.lower()) for i in testo]
+    snowball = SnowballStemmer("english")
+    result = [snowball.stem(i.lower()) for i in testo]
     return result
 #print((type(stemmer(t))))
 

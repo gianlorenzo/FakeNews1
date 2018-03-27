@@ -4,12 +4,25 @@ from Tools import tfIdfVectorizer
 # Authorization token
 tagme.GCUBE_TOKEN = "8a0bd46c-6638-493f-bd49-82e9965473ff-843339462"
 
-
+#prende le parole più significative
 def getMostRecurrWords(id_user):
     matrix = tfIdfVectorizer.cVec_fitter_termOcc(id_user,None,None,None,None)['term']
     lun = (len(matrix))
     soglia = lun/100
     topX = matrix.head(soglia)
-    return (topX)
+    return (list(topX))
+#x = getMostRecurrWords(17643749)
+#print((getMostRecurrWords(17643749)))
 
-print((getMostRecurrWords(17643749)))
+#trasforma una lista di parole in una dizionario parola:peso
+def getEntities(wordList):
+    dictionary={}
+    annotationsText = (" ").join(wordList)
+    print((str(annotationsText)))
+    annotation = tagme.annotate((annotationsText))
+    for ann in annotation.get_annotations(0.08):
+        dictionary[ann.entity_title] = ann.score
+    return dictionary
+
+#print(getEntities(x))
+

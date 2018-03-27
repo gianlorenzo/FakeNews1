@@ -5,7 +5,7 @@ from Tools import ElaboratoreTesto
 idUsers = DbConnection.takeUsersId()
 
 def writeFile():
-   for id in idUsers:
+   for id in idUsers[0:10]:
        i = 0
        file = open(str(id)+".txt","w+")
        tweet = DbConnection.takeText(id)
