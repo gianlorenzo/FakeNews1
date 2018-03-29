@@ -1,13 +1,14 @@
 import tagme
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem.porter import PorterStemmer
+from sklearn.metrics import jaccard_similarity_score
 tagme.GCUBE_TOKEN = "8a0bd46c-6638-493f-bd49-82e9965473ff-843339462"
 
 rels = tagme.relatedness_title([("Barack_Obama", "Italy"),
                                 ("Italy", "Germany"),
-                                ("France", "Italy")])
+                                ("New York", "America")])
 
-#print(rels.relatedness[2])
+print(rels.relatedness[2])
 
 lunch_annotations = tagme.annotate("via gaystarnew brief histori georg washington carver greatest bisexu black scientist time")
 dictionary = {}
@@ -24,4 +25,7 @@ def stemmer(testo):
     return result
 x = " dgsfdg "
 #print stemmer("via gaystarnew brief histori georg washington carver greatest bisexu black scientist time")
-print(type(x))
+#print(type(x))
+
+
+

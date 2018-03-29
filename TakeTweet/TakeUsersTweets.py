@@ -5,9 +5,22 @@ from Tools import ElaboratoreTesto
 idUsers = DbConnection.takeUsersId()
 
 def writeFile():
-   for id in idUsers[0:10]:
+    for id in idUsers[0:2]:
+        i = 0
+        file = open("/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/NoCleanedFile/"+str(id)+".txt", "w+")
+        tweet = DbConnection.takeText(id)
+        while (i < len(tweet)):
+            text = tweet[i]['Tweet']['text']
+            newText = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore')
+            file.write(newText + "\n")
+            i = i + 1
+        file.close()
+
+
+def writeCleanFile():
+   for id in idUsers[0:2]:
        i = 0
-       file = open(str(id)+".txt","w+")
+       file = open("/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/CleanedFile/"+str(id)+".txt","w+")
        tweet = DbConnection.takeText(id)
        while(i < len(tweet)):
            text = tweet[i]['Tweet']['text']
@@ -18,7 +31,6 @@ def writeFile():
        file.close()
 
 writeFile()
-
 
 
 

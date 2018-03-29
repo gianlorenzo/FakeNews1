@@ -4,7 +4,7 @@ from Tools import tfIdfVectorizer
 # Authorization token
 tagme.GCUBE_TOKEN = "8a0bd46c-6638-493f-bd49-82e9965473ff-843339462"
 
-#prende le parole più significative
+#prende le parole piu significative
 def getMostRecurrWords(id_user):
     matrix = tfIdfVectorizer.cVec_fitter_termOcc(id_user,None,None,None,None)['term']
     lun = (len(matrix))

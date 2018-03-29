@@ -10,11 +10,11 @@ import pandas as pd
 # 2. numero dei termini ordinati per occorrenze(da modificare)
 # 3.,4.,5. : http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
-dirNand = "C:\\Users\\NandG\\PycharmProjects\\FakeNews\\TakeTweet\\"
+dirNand = "/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/"
 dirDav = "/home/davben/git/FakeNews1/TakeTweet/"
 
 def take_text_by_file(id_user):
-    dir = dirDav+str(id_user)+".txt"
+    dir = dirNand+str(id_user)+".txt"
     file = open(dir,"r+")
     testo_utente = file.read()
     return testo_utente
