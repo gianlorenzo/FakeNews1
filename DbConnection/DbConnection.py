@@ -6,7 +6,7 @@ def connectionDb():
 
     client = MongoClient(uri)
     database = client['Fake_News']
-    collection = database['320_users']
+    collection = database['320users']
     return collection
 
 #Restituisce tutte le tuple

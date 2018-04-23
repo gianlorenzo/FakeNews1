@@ -49,6 +49,7 @@ def get_annotation_of_noCleanedFile(user_id,score,dirX):
         dictionary[ann.entity_title] = ann.score
     return dictionary
 
+
 def writeFileNoCleanedAnnotation(user_id,score,dirX):
     dict = get_annotation_of_noCleanedFile(user_id,score,dirX)
     print len(dict)
@@ -59,6 +60,9 @@ def writeFileNoCleanedAnnotation(user_id,score,dirX):
         i = i+1
 
     file.close()
+
+#writeFileNoCleanedAnnotation(17643749,0.2,dirDav)
+
 
 def get_cosine_similarity1(dict1,dict2):
     intersection = set(dict1.keys()) & set(dict2.keys())

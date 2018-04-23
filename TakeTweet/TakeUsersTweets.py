@@ -4,10 +4,13 @@ from Tools import ElaboratoreTesto
 
 idUsers = DbConnection.takeUsersId()
 
+dirNand = "/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/"
+dirDav = "/home/davben/git/FakeNews1/TakeTweet/"
+
 def writeFile():
-    for id in idUsers[0:2]:
+    for id in idUsers[0:40]:
         i = 0
-        file = open("/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/NoCleanedFile/"+str(id)+".txt", "w+")
+        file = open(dirDav+"NoCleanedFile/"+str(id)+".txt", "w+")
         tweet = DbConnection.takeText(id)
         while (i < len(tweet)):
             text = tweet[i]['Tweet']['text']
@@ -18,9 +21,9 @@ def writeFile():
 
 
 def writeCleanFile():
-   for id in idUsers[0:2]:
+   for id in idUsers[0:40]:
        i = 0
-       file = open("/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/CleanedFile/"+str(id)+".txt","w+")
+       file = open(dirDav+"CleanedFile/"+str(id)+".txt","w+")
        tweet = DbConnection.takeText(id)
        while(i < len(tweet)):
            text = tweet[i]['Tweet']['text']

@@ -11,10 +11,10 @@ import pandas as pd
 # 3.,4.,5. : http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
 
 dirNand = "/home/gianlorenzo/PycharmProjects/FakeNews1/TakeTweet/"
-dirDav = "/home/davben/git/FakeNews1/TakeTweet/"
+dirDav = "/home/davben/git/FakeNews1/TakeTweet/CleanedFile/"
 
 def take_text_by_file(id_user):
-    dir = dirNand+str(id_user)+".txt"
+    dir = dirDav+str(id_user)+".txt"
     file = open(dir,"r+")
     testo_utente = file.read()
     return testo_utente
@@ -67,5 +67,5 @@ def term_weights(cvec_counts, cvec,raws):
 
 #(id,raws,min_df,max_df,ngram_range)
 #x = (cVec_fitter_termOcc(73251704,100,1,0.7,(1,2)))
-#x = cVec_fitter_termWeight(847661349840617472,100,1,0.7,(1,2))
+#x = cVec_fitter_termWeight(12345,100,1,0.7,(1,2))
 #print((x))
