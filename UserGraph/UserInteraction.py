@@ -1,4 +1,4 @@
-from profilazioneUtente import UserProfiling
+from UserProfiling import UserProfiling
 import pandas as pd
 
 def entity2User(user1,user2):
