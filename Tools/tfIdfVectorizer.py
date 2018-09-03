@@ -1,5 +1,3 @@
-#http://www.ultravioletanalytics.com/blog/tf-idf-basics-with-pandas-scikit-learn
-
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 import numpy as np
@@ -61,11 +59,3 @@ def term_weights(cvec_counts, cvec,raws):
     if(raws == None):
         return (weights_df.sort_values(by='weight', ascending=False))
     return (weights_df.sort_values(by='weight', ascending=False).head(raws))
-
-
-
-
-#(id,raws,min_df,max_df,ngram_range)
-#x = (cVec_fitter_termOcc(73251704,100,1,0.7,(1,2)))
-#x = cVec_fitter_termWeight(12345,100,1,0.7,(1,2))
-#print((x))

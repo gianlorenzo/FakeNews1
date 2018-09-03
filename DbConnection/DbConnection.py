@@ -25,4 +25,3 @@ def takeText(id):
 
 
 
-

@@ -14,8 +14,6 @@ def entity2User(user1,user2):
     return entity2user
 
 
-
-
 def wordListMatcher(list1,list2):
     result=[]
     for i in list1:

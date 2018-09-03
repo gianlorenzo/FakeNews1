@@ -1,8 +1,6 @@
 import tagme
 import math
 import unicodedata
-from collections import OrderedDict
-import operator
 
 # Authorization token
 tagme.GCUBE_TOKEN = "8a0bd46c-6638-493f-bd49-82e9965473ff-843339462"
@@ -60,9 +58,6 @@ def writeFileNoCleanedAnnotation(user_id,score,dirX):
         i = i+1
 
     file.close()
-
-#writeFileNoCleanedAnnotation(17643749,0.2,dirDav)
-
 
 def get_cosine_similarity1(dict1,dict2):
     intersection = set(dict1.keys()) & set(dict2.keys())

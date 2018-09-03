@@ -1,4 +1,3 @@
-
 from nltk.tokenize import RegexpTokenizer
 import re
 from nltk.stem.porter import PorterStemmer
