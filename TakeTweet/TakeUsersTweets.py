@@ -40,4 +40,4 @@ def writeCleanFile():
 
 
 
-writeFile()
+writeCleanFile()

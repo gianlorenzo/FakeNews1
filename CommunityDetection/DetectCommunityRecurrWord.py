@@ -1,6 +1,8 @@
 from DbConnection  import DbConnection as dc
 from UserProfiling import UserProfiling as up
 import pandas as pd
+import string
+import random
 
 idUsers = dc.takeUsersId()
 
@@ -55,10 +57,48 @@ def twoUsers2Word():
                 else :
                         #quindi l ultima locazione e da riempire perche era stato trovato per la prima volta una coppia di un solo utente
                     df["UserB"].iloc[listaLocazioni[-1]] = str(id)
-    return df
+        file = open("/home/gianlorenzo/Scrivania/prova.txt","w+")
+        file.write(str(df))
+        file.close()
+    return file
 
-print twoUsers2Word()
 
+
+
+def openCsv():
+    file = open("/home/gianlorenzo/Scrivania/prova.csv","r")
+    text = open("/home/gianlorenzo/Scrivania/prova1.txt","w+")
+    for line in file.readlines()[1:]:
+        text.write(str(line))
+    file.close()
+
+def id_generator(size=3, chars=string.ascii_letters):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+def openTxt():
+    text = open("/home/gianlorenzo/Scrivania/prova1.txt","r")
+    lines = []
+    id = []
+    for line in text.readlines()[1:]:
+        lines.append(line.split(",")[1:])
+    queryCreate = open("/home/gianlorenzo/Scrivania/queryCreate.txt","w+")
+    queryRel = open("/home/gianlorenzo/Scrivania/queryRel.txt", "w+")
+
+    for i in range(0,len(lines)):
+        y = id_generator()
+        x = id_generator()
+        if lines[i][1]=="":
+            queryCreate.write("create("+str(y)+":User{id1U:"+str(lines[i][0])+"})"+"\n")
+        else:
+            queryCreate.write("create("+str(y)+":User{idU:"+str(lines[i][0])+"})"+"\n")
+            queryCreate.write("create("+str(x)+":User{idU:"+str(lines[i][1])+"})"+"\n")
+            queryRel.write("match("+str(y)+":User{idU:"+str(lines[i][0])+"}),("+str(x)+":User{idU:"+str(lines[i][1])+"})"+"\n")
+            queryRel.write("create("+str(y)+")-[r:"+str(lines[i][2])+"]->("+str(x)+")"+"\n")
+    queryCreate.close()
+    queryRel.close()
+
+
+openTxt()
 
 #metodo che mi prende la posizione di un elemento in un series
 def getLocByFrame(colonna,parola):
