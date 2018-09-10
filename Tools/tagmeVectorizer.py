@@ -62,11 +62,9 @@ def writeFileNoCleanedAnnotation(user_id,score,dirX):
 def get_cosine_similarity1(dict1,dict2):
     intersection = set(dict1.keys()) & set(dict2.keys())
     numerator = sum([dict1[x]*dict2[x] for x in intersection])
-
     sum1 = sum([dict1[x]**2 for x in dict1.keys()])
     sum2 = sum([dict2[x]**2 for x in dict2.keys()])
     denominator = math.sqrt(sum1) * math.sqrt(sum2)
-
     if not denominator:
         return 0.0
     else:

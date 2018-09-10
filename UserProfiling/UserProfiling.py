@@ -15,7 +15,6 @@ def getMostRecurrWords(id_user):
     topX = matrix.head(soglia)
     return (list(topX))
 #x = getMostRecurrWords(17643749)
-#print((getMostRecurrWords(17643749)))
 
 #trasforma una lista di parole in una dizionario parola:peso
 def getEntities(wordList):
@@ -31,7 +30,4 @@ def getEntities(wordList):
 def getEntitiesNoCleaned(id,score,dir):
     dict = tagmeVectorizer.get_annotation_of_noCleanedFile(id,score,dir)
     return dict
-
-#x = getEntitiesNoCleaned(17643749,0.2,dirDav).keys()
-#print(getEntities(x))
 

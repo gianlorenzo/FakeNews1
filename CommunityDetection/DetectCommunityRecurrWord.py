@@ -57,13 +57,11 @@ def twoUsers2Word():
                 else :
                         #quindi l ultima locazione e da riempire perche era stato trovato per la prima volta una coppia di un solo utente
                     df["UserB"].iloc[listaLocazioni[-1]] = str(id)
-        file = open("/home/gianlorenzo/Scrivania/prova.txt","w+")
-        file.write(str(df))
-        file.close()
-    return file
+    return df.to_csv("/home/gianlorenzo/Scrivania/prova.csv")
 
-
-
+#genera id random alfanumerici di lunghezza 3
+def id_generator(size=3, chars=string.ascii_letters):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 def openCsv():
     file = open("/home/gianlorenzo/Scrivania/prova.csv","r")
@@ -72,13 +70,9 @@ def openCsv():
         text.write(str(line))
     file.close()
 
-def id_generator(size=3, chars=string.ascii_letters):
-    return ''.join(random.choice(chars) for _ in range(size))
-
-def openTxt():
+def createNeo4jQueries():
     text = open("/home/gianlorenzo/Scrivania/prova1.txt","r")
     lines = []
-    id = []
     for line in text.readlines()[1:]:
         lines.append(line.split(",")[1:])
     queryCreate = open("/home/gianlorenzo/Scrivania/queryCreate.txt","w+")
@@ -98,7 +92,6 @@ def openTxt():
     queryRel.close()
 
 
-openTxt()
 
 #metodo che mi prende la posizione di un elemento in un series
 def getLocByFrame(colonna,parola):
@@ -107,19 +100,3 @@ def getLocByFrame(colonna,parola):
     return loc.index[0]
 
 
-def prova():
-    df = pd.DataFrame(columns=["UserA", "UserB", "Word"])
-    wordlist = ["a","b","c","d","a"]
-    for word in wordlist:
-        currentWords = df["Word"].values.tolist()
-        #if word not in currentWords:
-            #df.append({"UserA":"a","UserB":None,"Word":str(word)})
-        df.loc[len(df)] = ["a","V",str(word)]
-        myseries = pd.Series(df["Word"])
-        loc = myseries[myseries == "c"]
-    #return loc.index[0]
-    #return str(df["UserB"].iloc[loc.index[0]])
-    #return wordlist[0:len(wordlist)-1]
-    return df.drop_duplicates()
-#print(prova())
-#print(twoUsers2Word())
