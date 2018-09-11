@@ -24,7 +24,7 @@ def writeFile():
 
 def writeCleanFile():
     os.mkdir(dirNand + "CleanedFile")
-    for id in idUsers[0:40]:
+    for id in idUsers[0:70]:
        i = 0
        file = open(dirNand+"CleanedFile/"+str(id)+".txt","w+")
        tweet = DbConnection.takeText(id)
