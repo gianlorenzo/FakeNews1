@@ -1,3 +1,5 @@
+from scipy.spatial.tests.test_kdtree import two_trees_consistency
+
 from DbConnection  import DbConnection as dc
 from UserProfiling import UserProfiling as up
 import pandas as pd
@@ -31,7 +33,7 @@ def findAllLocs(colonnaParole,word):
 
 def twoUsers2Word():
     df = pd.DataFrame(columns=["UserA","UserB","Word"])
-    for id in idUsers[0:60]:
+    for id in idUsers[0:10]:
         wordList = up.getMostRecurrWords(id)[0:30]
         print wordList
         for word in wordList:
@@ -58,7 +60,8 @@ def twoUsers2Word():
                 else :
                         #quindi l ultima locazione e da riempire perche era stato trovato per la prima volta una coppia di un solo utente
                     df["UserB"].iloc[listaLocazioni[-1]] = str(id)
-    return df.drop_duplicates().dropna().reset_index(drop=True)#.to_csv("/home/bigbrothers/Scrivania/xxx.csv",index=False)
+    return df.drop_duplicates().dropna().reset_index(drop=True).to_csv("/home/gianlorenzo/Scrivania/xxx.csv",index=False)
 
 
 
+print twoUsers2Word()

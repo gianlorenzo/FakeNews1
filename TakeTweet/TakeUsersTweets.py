@@ -10,7 +10,7 @@ dirDav = "/home/davben/git/FakeNews1/TakeTweet/"
 
 def writeFile():
     os.mkdir(dirNand+"NoCleanedFile")
-    for id in idUsers[0:40]:
+    for id in idUsers[0:70]:
         i = 0
         file = open(dirNand+"NoCleanedFile/"+str(id)+".txt", "w+")
         tweet = DbConnection.takeText(id)
