@@ -1,7 +1,6 @@
 from CommunityDetection import UsersRecurrWord as urw
 import collections
 
-
 #metodo che trova i primi due utenti compatibili
 def primaCompatibilita(df,id1,id2):
     primaComunita = []

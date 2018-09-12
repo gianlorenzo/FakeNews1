@@ -1,4 +1,3 @@
-from CommunityDetection import CommunityDetect as cd
 import pandas as pd
 from DbConnection import DbConnection as dbc
 

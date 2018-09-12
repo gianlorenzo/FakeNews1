@@ -1,5 +1,4 @@
 import tagme
-from sklearn.metrics import jaccard_similarity_score
 from Tools import tfIdfVectorizer, tagmeVectorizer
 
 # Authorization token

@@ -30,7 +30,6 @@ def communityLabelling():
     community.close()
     return community
 
-print(communityLabelling())
 
 
 

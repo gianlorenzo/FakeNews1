@@ -1,11 +1,6 @@
-from scipy.spatial.tests.test_kdtree import two_trees_consistency
-
 from DbConnection  import DbConnection as dc
 from UserProfiling import UserProfiling as up
 import pandas as pd
-import collections
-import random
-import string
 
 idUsers = dc.takeUsersId()
 
@@ -62,6 +57,3 @@ def twoUsers2Word():
                     df["UserB"].iloc[listaLocazioni[-1]] = str(id)
     return df.drop_duplicates().dropna().reset_index(drop=True).to_csv("/home/gianlorenzo/Scrivania/xxx.csv",index=False)
 
-
-
-print twoUsers2Word()
