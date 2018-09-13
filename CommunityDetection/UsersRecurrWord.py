@@ -55,5 +55,5 @@ def twoUsers2Word():
                 else :
                         #quindi l ultima locazione e da riempire perche era stato trovato per la prima volta una coppia di un solo utente
                     df["UserB"].iloc[listaLocazioni[-1]] = str(id)
-    return df.drop_duplicates().dropna().reset_index(drop=True).to_csv("/home/gianlorenzo/Scrivania/xxx.csv",index=False)
+    return df.drop_duplicates().dropna().reset_index(drop=True)#.to_csv("/home/gianlorenzo/Scrivania/xxx.csv",index=False)
 
