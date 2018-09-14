@@ -22,7 +22,7 @@ def primaCompatibilita(df,id1,id2):
             dropper=dropper-1
         i = i + 1
         dropper = dropper +1
-    if (comunita > 2):
+    if (comunita > 5):
         primaComunita.append(id1)
         primaComunita.append(id2)
     #print comunita
